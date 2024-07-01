@@ -1,0 +1,18 @@
+services:
+  prometheus:
+    container_name: prometheus-medium
+    image: prom/prometheus:v2.45.6
+    ports:
+      - 9090:9090
+    volumes:
+      - ./config.yaml:/etc/prometheus/prometheus.yml
+  grafana:
+    container_name: grafana-medium
+    image: grafana/grafana:9.5.20
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_volume_medium:/var/lib/Grafana
+
+volumes:
+  grafana_volume_medium:
